@@ -18,6 +18,7 @@ function App() {
         value: isi.name,
       };
     });
+    setData(hasil.sort((a, b) => a.label.localeCompare(b.label)));
   };
 
   useEffect(() => {
