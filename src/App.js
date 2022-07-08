@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [data, setData] = useState([]);
+  const [userPilih, setUserPilih] = useState("");
+  const [tampil, setTampil] = useState(false);
 
   const apiGithub = async () => {
     const ambil = await fetch(
@@ -25,9 +27,23 @@ function App() {
     apiGithub();
   }, []);
 
+  const handleLihat = () => {
+    setTampil((state) => !state);
+  };
+
+  const handlePilih = (value) => {
+    setUserPilih(value);
+  };
   return (
     <div className="container mt-5">
-      <Select options={data}> </Select>
+      <Select options={data} onChange={(x) => handlePilih(x.value)}>
+        {" "}
+      </Select>
+      <div className="btn btn-primary mt-5" onClick={() => handleLihat()}>
+        {" "}
+        {tampil ? "Tutup" : "Lihat"}
+      </div>
+      <h2>{tampil ? userPilih : ""}</h2>
     </div>
   );
 }
