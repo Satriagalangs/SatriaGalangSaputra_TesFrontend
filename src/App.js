@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
+import Select from "react-select";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [data, setData] = useState([]);
@@ -23,8 +25,8 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h2>TES</h2>
+    <div className="container mt-5">
+      <Select options={data}> </Select>
     </div>
   );
 }
